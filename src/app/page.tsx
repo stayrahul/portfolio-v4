@@ -5,10 +5,12 @@ import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black w-full overflow-hidden text-white selection:bg-cyan-500 selection:text-black">
+    <main className="min-h-screen bg-[#050a14] w-full overflow-hidden text-white relative">
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <Skills />

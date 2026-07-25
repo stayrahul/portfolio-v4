@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="60%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="#070d1a"/>
+  <!-- Stylized R monogram — two clean strokes -->
+  <path d="M160 400V112h8l148 0c58 0 96 38 96 88s-38 88-96 88h-92l120 112h-84l-100-96v96z" fill="none" stroke="url(#g1)" stroke-width="36" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

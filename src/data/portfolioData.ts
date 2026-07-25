@@ -1,12 +1,12 @@
 export const selfData = {
   name: "Rahul Kushwaha",
   roles: [
-    "Frontend Developer",
-    "Creative Coder",
+    "Vibe Coder",
+    "Creative Developer",
     "UI/UX Enthusiast",
-    "Student Developer"
+    "Tech Explorer"
   ],
-  bio: "I craft premium web experiences at the intersection of design and engineering. Focused on performance, precision, and pushing the boundaries of the modern web.",
+  bio: "Coding purely for the joy of building. I craft fun, interactive, and aesthetic web experiences with cutting-edge tools.",
   email: "rahul7926963@gmail.com",
   socials: {
     github: "https://github.com/stayrahul",
@@ -16,7 +16,7 @@ export const selfData = {
     facebook: "https://facebook.com/stayrahul"
   },
   location: "Kathmandu, Nepal",
-  resume: "/Rahul-Kushwaha-CV.pdf"
+  resume: "https://github.com/stayrahul"
 };
 
 export const skillsData = [
@@ -26,14 +26,14 @@ export const skillsData = [
 ];
 
 export const experienceData = [
-  { id: 1, title: "Frontend Developer" },
-  { id: 2, title: "Freelance Web Designer" },
+  { id: 1, title: "Vibe Coder" },
+  { id: 2, title: "Creative Developer" },
   { id: 3, title: "UI/UX Enthusiast" },
-  { id: 4, title: "AI Chatbot Developer" },
-  { id: 5, title: "React Native Explorer" },
+  { id: 4, title: "AI Explorer" },
+  { id: 5, title: "Next.js & React Maker" },
   { id: 6, title: "Open Source Contributor" },
-  { id: 7, title: "Creative Coder" },
-  { id: 8, title: "Next.js Specialist" }
+  { id: 7, title: "Frontend Craftsman" },
+  { id: 8, title: "Interactive Web Creator" }
 ];
 
 export const projectsData = [
@@ -124,28 +124,25 @@ export const navItems = [
   { name: "Home", link: "#home" },
   { name: "Projects", link: "#projects" },
   { name: "Skills", link: "#skills" },
-  { name: "Experience", link: "#experience" }
+  { name: "Craft", link: "#experience" }
 ];
 
 export const faqsData = [
   {
-    question: "What are your hobbies?",
-    answer: "I love exploring new tech, contributing to open-source projects, and reading about design and engineering."
+    question: "Why do you code?",
+    answer: "I am a pure vibecoder! I code for the sheer joy, fun, and creative freedom of building awesome digital experiences."
   },
   {
     question: "What is your favorite tech stack?",
     answer: "My go-to stack is Next.js, TypeScript, Tailwind CSS, and Framer Motion for building fast, beautiful web experiences."
   },
   {
-    question: "Are you available for freelance work?",
-    answer: "Yes! I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to email me."
-  },
-  {
-    question: "What are your long-term career goals?",
-    answer: "I want to continuously grow as a software engineer, building products that combine uncompromising aesthetic precision with scalable architectures."
+    question: "Do you build projects for fun?",
+    answer: "Yes! Every project here is crafted out of curiosity, experimentation, and a passion for design & engineering."
   },
   {
     question: "What motivates you?",
-    answer: "I'm motivated by the challenge of transforming bold ideas into extraordinary digital experiences that people love to use."
+    answer: "Transforming creative ideas into stunning web apps with smooth animations that bring joy to create and use."
   }
 ];
+

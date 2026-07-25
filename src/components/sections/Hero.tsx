@@ -3,205 +3,147 @@
 import { motion } from "framer-motion";
 import { selfData } from "@/data/portfolioData";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
-import { ArrowDown, ArrowUpRight, Code2, Sparkles, Terminal, Rocket, CheckCircle2 } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Code2 } from "lucide-react";
 import Image from "next/image";
 import { Spotlight } from "@/components/ui/spotlight";
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
-const stats = [
-  { label: "Projects Completed", value: "9+" },
-  { label: "Tech Stack Tools", value: "13+" },
-  { label: "Client Satisfaction", value: "100%" }
+const socials = [
+  { icon: FaGithub, href: selfData.socials.github, label: "GitHub" },
+  { icon: FaLinkedin, href: selfData.socials.linkedin, label: "LinkedIn" },
+  { icon: FaTwitter, href: selfData.socials.twitter, label: "Twitter" },
+  { icon: FaInstagram, href: selfData.socials.instagram, label: "Instagram" },
 ];
 
 export const Hero = () => {
   return (
-    <section id="home" className="relative min-h-[100dvh] flex flex-col justify-center text-white pt-24 pb-16 overflow-hidden">
+    <section id="home" className="relative min-h-[100dvh] flex flex-col justify-center text-white overflow-hidden">
 
-      {/* Ambient Decor & Spotlights */}
-      <div>
-        <Spotlight className="-left-10 -top-40 h-screen md:-left-32 md:-top-20" fill="white" />
-        <Spotlight className="h-[80vh] w-[50vw] top-10 left-full opacity-60" fill="#06b6d4" />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw] opacity-40" fill="#3b82f6" />
+      {/* ── Ambient Light ── */}
+      <div className="pointer-events-none">
+        <Spotlight className="-left-10 -top-40 h-screen md:-left-32 md:-top-20 opacity-60" fill="white" />
+        <Spotlight className="h-[80vh] w-[50vw] top-10 left-full opacity-40" fill="#38bdf8" />
+        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw] opacity-25" fill="#818cf8" />
       </div>
 
-      <div className="absolute inset-0 w-full h-full bg-[#030712] [mask-image:radial-gradient(ellipse_at_center,transparent_15%,#030712)] pointer-events-none z-0" />
+      <div className="absolute inset-0 w-full h-full bg-[#050a14] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,#050a14)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03] pointer-events-none" style={{ backgroundSize: '60px 60px' }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050a14]/60 to-[#050a14] pointer-events-none" />
 
-      {/* Animated Grid Overlay */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.07] pointer-events-none" style={{ backgroundSize: '70px 70px' }} />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030712]/50 to-[#030712] z-0 pointer-events-none" />
+      {/* ── Content ── */}
+      <div className="relative z-10 max-w-3xl mx-auto px-6 w-full flex flex-col items-center text-center pt-32 pb-16">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col items-center justify-center text-center mt-4 md:mt-8">
-
-        {/* Kinetic Watermark Text */}
-        <h2 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[13vw] md:text-[18vw] font-black opacity-[0.025] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap uppercase">
-          {selfData.name.split(' ')[0]}
-        </h2>
-
-        {/* Available for Work Status Badge */}
+        {/* Status */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-md mb-8 hover:border-cyan-400 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full glass-pill mb-10"
         >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-60" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400" />
           </span>
-          <span className="text-[11px] font-mono font-medium tracking-wider uppercase text-cyan-300">
-            Open for freelance & full-time roles
+          <span className="text-[11px] font-mono font-semibold tracking-widest uppercase text-sky-300/90">
+            Creative Developer & Vibecoder
           </span>
         </motion.div>
 
-        {/* Avatar with Multi-layer Glowing Ring */}
+        {/* Avatar */}
         <motion.div
-          initial={{ scale: 0, rotate: -10 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          className="group relative mb-8 animate-float"
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7, type: "spring", bounce: 0.25 }}
+          className="group relative mb-8"
         >
-          <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 rounded-full blur-2xl opacity-40 group-hover:opacity-75 transition-opacity duration-700" />
-          <div className="relative w-36 h-36 md:w-48 md:h-48 p-1 rounded-full border-2 border-cyan-400/40 bg-black/90 backdrop-blur-md overflow-hidden shadow-2xl">
-            <Image
-              src="/profile.png"
-              alt={selfData.name}
-              fill
-              priority
-              sizes="(max-width: 768px) 144px, 192px"
-              className="object-cover rounded-full transition-all duration-700 scale-105 group-hover:scale-100"
-            />
+          <div className="absolute -inset-3.5 bg-gradient-to-tr from-sky-400/50 via-indigo-500/40 to-purple-500/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-[3px] bg-gradient-to-tr from-sky-400/60 via-indigo-500/40 to-purple-500/30 shadow-2xl">
+            <div className="w-full h-full rounded-full overflow-hidden bg-[#050a14]">
+              <Image
+                src="/profile.png"
+                alt={selfData.name}
+                fill
+                priority
+                sizes="(max-width: 768px) 112px, 144px"
+                className="object-cover rounded-full transition-transform duration-500 group-hover:scale-[1.06]"
+              />
+            </div>
           </div>
-          <div className="absolute -bottom-2 -right-2 p-2.5 rounded-full bg-[#030712] border border-cyan-500/40 text-cyan-400 backdrop-blur-md shadow-lg">
-            <Code2 size={18} />
+          <div className="absolute -bottom-1 -right-1 p-2 rounded-full bg-[#050a14] ring-2 ring-sky-400/30 text-sky-300">
+            <Code2 size={14} />
           </div>
         </motion.div>
 
-        {/* Roles Subheading */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex items-center gap-3 mb-4"
-        >
-          <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-cyan-500" />
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.4em] text-cyan-400 font-mono font-bold">
-            {selfData.roles.slice(0, 3).join(" • ")}
-          </p>
-          <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-cyan-500" />
-        </motion.div>
-
-        {/* Dynamic Name Heading */}
+        {/* Name */}
         <TextGenerateEffect
-          className="mb-6 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-white drop-shadow-2xl"
+          className="mb-5 text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter text-white"
           words={selfData.name}
         />
 
-        {/* Bio Paragraph */}
-        <motion.div
-          initial={{ y: 15, opacity: 0 }}
+        {/* Bio */}
+        <motion.p
+          initial={{ y: 12, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-sm sm:text-base md:text-lg text-white/55 max-w-lg mx-auto leading-relaxed font-light mb-10"
         >
-          <p className="text-sm md:text-lg lg:text-xl font-light tracking-tight text-white/70 max-w-2xl mx-auto leading-relaxed px-4">
-            Crafting scalable web architectures and ultra-responsive digital products with <span className="text-cyan-300 font-medium underline decoration-cyan-500 decoration-2 underline-offset-4">aesthetic precision</span>.
-          </p>
-        </motion.div>
+          Crafting fun, interactive & aesthetic web experiences with{" "}
+          <span className="text-sky-300/90 font-normal">creative freedom</span> — purely for the joy of building.
+        </motion.p>
 
-        {/* Stat Highlights Bar */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="grid grid-cols-3 gap-4 md:gap-8 my-8 py-4 px-6 md:px-10 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl max-w-xl shadow-lg"
-        >
-          {stats.map((s) => (
-            <div key={s.label} className="flex flex-col items-center">
-              <span className="text-xl md:text-3xl font-black font-mono text-cyan-400 tracking-tight">{s.value}</span>
-              <span className="text-[9px] md:text-[11px] font-mono text-white/50 uppercase tracking-widest mt-0.5">{s.label}</span>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md"
+          transition={{ delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-xs sm:max-w-none sm:w-auto"
         >
           <a
             href="#projects"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-cyan-500 text-black font-bold text-xs uppercase tracking-widest hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:scale-105 flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-7 py-3 rounded-full bg-sky-400 text-[#050a14] font-bold text-xs uppercase tracking-widest hover:bg-sky-300 transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.4)] flex items-center justify-center gap-2 group"
           >
-            Explore Projects
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            View Projects
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
-
           <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-white font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-3 rounded-full glass-pill text-white/80 font-semibold text-xs uppercase tracking-widest hover:text-white flex items-center justify-center gap-2"
           >
-            Let's Collaborate
+            Get in Touch
           </a>
         </motion.div>
 
-        {/* Social Badges */}
+        {/* Socials */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="flex items-center gap-4 mt-8"
+          transition={{ delay: 0.6 }}
+          className="flex items-center gap-2 mt-10"
         >
-          <a
-            href={selfData.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all"
-            aria-label="GitHub Profile"
-          >
-            <FaGithub size={18} />
-          </a>
-          <a
-            href={selfData.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all"
-            aria-label="LinkedIn Profile"
-          >
-            <FaLinkedin size={18} />
-          </a>
-          <a
-            href={selfData.socials.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all"
-            aria-label="Twitter Profile"
-          >
-            <FaTwitter size={18} />
-          </a>
-          <a
-            href={selfData.socials.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all"
-            aria-label="Instagram Profile"
-          >
-            <FaInstagram size={18} />
-          </a>
+          {socials.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-full text-white/40 hover:text-sky-300 hover:bg-white/[0.04] transition-all duration-300"
+              aria-label={s.label}
+            >
+              <s.icon size={16} />
+            </a>
+          ))}
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="mt-10 text-white/40 hover:text-cyan-400 transition-colors flex justify-center cursor-pointer"
+        {/* Scroll hint */}
+        <motion.a
+          href="#skills"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+          className="mt-12 text-white/20 hover:text-sky-300/60 transition-colors"
+          aria-label="Scroll down"
         >
-          <a href="#skills" aria-label="Scroll to Skills section">
-            <ArrowDown size={22} />
-          </a>
-        </motion.div>
-
+          <ArrowDown size={18} />
+        </motion.a>
       </div>
     </section>
   );

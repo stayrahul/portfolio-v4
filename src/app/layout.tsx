@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rahul Kushwaha | Portfolio",
-  description: "Portfolio of Rahul Kushwaha, an aspiring frontend developer and creative coder.",
+  title: "Rahul Kushwaha — Creative Developer & Vibecoder",
+  description: "Portfolio of Rahul Kushwaha. Crafting fun, interactive, and aesthetic web experiences with creative freedom.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white selection:bg-primary/30`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#050a14] text-white`}
       >
         {children}
       </body>
