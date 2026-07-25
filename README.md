@@ -18,17 +18,17 @@
 
 ## 🌟 Overview
 
-**Portfolio v4** is designed at the intersection of modern engineering precision and rich aesthetics. Engineered to wow visitors at first glance, it features ambient spotlights, kinetic background typography, glassmorphism card components, interactive AI chatbot assistant, responsive 2-column mobile project grid layout, and bi-directional marquee animations.
+**Portfolio v4** is designed at the intersection of modern engineering precision and rich aesthetics. Engineered to wow visitors at first glance, it features ambient spotlights, kinetic background typography, cyan neon glassmorphism components, stat highlights, responsive 2-column mobile project grid layout, and bi-directional marquee animations.
 
 ---
 
 ## ✨ Key Features
 
-- **🎨 Ambient Spotlight & Neon Aesthetics**: Custom dark mode visual design with ambient particle spotlights, radial grid overlays, and subtle glowing borders.
-- **🤖 Built-in AI Assistant Chatbot**: Powered by AI SDK with custom theme picker and responsive floating action widget.
+- **🎨 Cyan Neon & Dark Slate Aesthetics**: Ultra-sleek dark mode visual design with cyan/blue ambient spotlights, radial grid overlays, and glowing borders.
+- **📊 Metric Stat Counter Showcase**: Live stat badges showcasing completed projects, tool stack, and satisfaction metrics.
 - **📱 Responsive Mobile-First Design**: Optimized 2-column layout on mobile devices (`grid-cols-2`) for seamless navigation across all device viewports.
 - **🔄 Dual Marquee "Tech Arsenal"**: Bi-directional smooth infinite scrolling tech badges (left-to-right & right-to-left) with category breakdown cards.
-- **🛠️ Category-Filtered Projects**: Interactive filter tabs (*All*, *Web Apps*, *AI & Tools*) showcasing live demos and source code links.
+- **🛠️ Category-Filtered Projects**: Interactive filter tabs (*All*, *Apps*, *AI*) showcasing live demos and source code links.
 - **💼 Interactive Timeline & Roles**: Glassmorphic career timeline grid with direct curriculum / CV download link.
 - **📩 Interactive Contact Suite**: Seamless contact form with transmission status indicators, direct email, and location metadata.
 
@@ -42,7 +42,6 @@
 | **Language** | [TypeScript](https://www.typescriptlang.org/) |
 | **Styling** | [Tailwind CSS v4](https://tailwindcss.com/), [PostCSS](https://postcss.org/) |
 | **Animations** | [Framer Motion](https://www.framer.com/motion/), [Tailwind Animate](https://github.com/jamiebuilds/tailwindcss-animate) |
-| **AI Integration** | [@ai-sdk/react](https://sdk.vercel.ai/docs), [@ai-sdk/google](https://sdk.vercel.ai/docs) |
 | **Icons** | [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/) |
 
 ---
@@ -54,7 +53,6 @@ portfolio-v4/
 ├── public/                     # Static assets (images, icons, CV PDF, background grids)
 ├── src/
 │   ├── app/
-│   │   ├── api/chat/           # AI Chatbot endpoint
 │   │   ├── globals.css         # Tailwind CSS v4 import, keyframes & glass utilities
 │   │   ├── layout.tsx          # Root layout & font configuration
 │   │   └── page.tsx            # Main portfolio page entry point
@@ -66,7 +64,6 @@ portfolio-v4/
 │   │   │   ├── Projects.tsx    # Selected works grid with filter tabs
 │   │   │   └── Skills.tsx      # Dual marquee & skill category cards
 │   │   └── ui/
-│   │       ├── Chatbot.tsx     # Floating AI Chatbot assistant with theme picker
 │   │       ├── Footer.tsx      # Global footer & social links
 │   │       ├── Navbar.tsx      # Floating glassmorphic navigation bar
 │   │       ├── spotlight.tsx   # Aceternity UI spotlight SVG component
@@ -106,13 +103,7 @@ npm -v
    npm install
    ```
 
-3. **Set up Environment Variables**:
-   Create a `.env.local` file in the root directory:
-   ```env
-   GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key_here
-   ```
-
-4. **Run the Development Server**:
+3. **Run the Development Server**:
    ```bash
    npm run dev
    ```

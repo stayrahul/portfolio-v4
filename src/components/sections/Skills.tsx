@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { skillsData } from "@/data/portfolioData";
-import { Code2, Cpu, Layers, Layout, Wrench } from "lucide-react";
+import { Code2, Cpu, Layers, Layout } from "lucide-react";
 
 const skillCategories = [
   {
@@ -32,8 +32,8 @@ export const Skills = () => {
     <section id="skills" className="py-24 md:py-36 relative overflow-hidden">
 
       {/* Background Glow Spheres */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 w-full flex flex-col items-center">
 
@@ -43,11 +43,11 @@ export const Skills = () => {
             initial={{ height: 0 }}
             whileInView={{ height: "40px" }}
             viewport={{ once: true }}
-            className="w-[2px] bg-gradient-to-b from-transparent via-blue-500 to-transparent mb-6"
+            className="w-[2px] bg-gradient-to-b from-transparent via-cyan-400 to-transparent mb-6"
           />
           <h2 className="text-4xl sm:text-6xl font-black tracking-tighter uppercase text-white flex items-center gap-4">
-            <Code2 className="w-8 h-8 md:w-12 md:h-12 text-blue-500" />
-            Tech Arsenal<span className="text-blue-500">.</span>
+            <Code2 className="w-8 h-8 md:w-12 md:h-12 text-cyan-400" />
+            Tech Arsenal<span className="text-cyan-400">.</span>
           </h2>
           <p className="mt-4 text-xs md:text-sm text-white/50 font-mono tracking-widest uppercase max-w-md">
             The core tools, languages & frameworks powering my build process.
@@ -64,11 +64,11 @@ export const Skills = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.5 }}
-                className="group relative p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl hover:border-blue-500/40 hover:bg-white/[0.04] transition-all duration-500 shadow-xl"
+                transition={{ delay: i * 0.12, duration: 0.5 }}
+                className="group relative p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl hover:border-cyan-400/40 hover:bg-white/[0.04] transition-all duration-500 shadow-xl"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20 group-hover:scale-110 transition-transform">
+                  <div className="p-3 rounded-2xl bg-cyan-400/10 text-cyan-400 border border-cyan-400/20 group-hover:scale-110 transition-transform">
                     <Icon size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-white tracking-wide">{cat.title}</h3>
@@ -78,7 +78,7 @@ export const Skills = () => {
                   {cat.skills.map((s) => (
                     <span
                       key={s}
-                      className="px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-white/70 bg-white/5 border border-white/10 group-hover:border-blue-500/30 group-hover:text-white transition-colors"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-white/70 bg-white/5 border border-white/10 group-hover:border-cyan-400/30 group-hover:text-cyan-300 transition-colors"
                     >
                       {s}
                     </span>
@@ -92,18 +92,18 @@ export const Skills = () => {
         {/* DUAL DIRECTION INFINITE MARQUEE */}
         <div className="relative flex flex-col gap-6 overflow-x-hidden w-full group py-4">
 
-          {/* Gradient Masks on Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-56 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-56 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+          {/* Edge Masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-56 bg-gradient-to-r from-[#030712] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-56 bg-gradient-to-l from-[#030712] to-transparent z-10 pointer-events-none" />
 
           {/* Marquee Row 1 - Forward */}
           <div className="flex space-x-6 md:space-x-8 whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
             {firstRow.map((skill, index) => (
               <div
                 key={`row1-${skill}-${index}`}
-                className="inline-flex items-center justify-center px-6 py-3.5 md:px-10 md:py-5 bg-white/[0.02] border border-white/10 rounded-2xl hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300 backdrop-blur-md cursor-pointer group/item shadow-lg"
+                className="inline-flex items-center justify-center px-6 py-3.5 md:px-10 md:py-5 bg-white/[0.02] border border-white/10 rounded-2xl hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300 backdrop-blur-md cursor-pointer group/item shadow-lg"
               >
-                <span className="text-white/60 group-hover/item:text-white text-sm md:text-lg font-bold font-mono tracking-widest uppercase transition-colors">
+                <span className="text-white/60 group-hover/item:text-cyan-300 text-sm md:text-lg font-bold font-mono tracking-widest uppercase transition-colors">
                   {skill}
                 </span>
               </div>
@@ -115,9 +115,9 @@ export const Skills = () => {
             {secondRow.map((skill, index) => (
               <div
                 key={`row2-${skill}-${index}`}
-                className="inline-flex items-center justify-center px-6 py-3.5 md:px-10 md:py-5 bg-white/[0.02] border border-white/10 rounded-2xl hover:bg-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-md cursor-pointer group/item shadow-lg"
+                className="inline-flex items-center justify-center px-6 py-3.5 md:px-10 md:py-5 bg-white/[0.02] border border-white/10 rounded-2xl hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300 backdrop-blur-md cursor-pointer group/item shadow-lg"
               >
-                <span className="text-white/60 group-hover/item:text-white text-sm md:text-lg font-bold font-mono tracking-widest uppercase transition-colors">
+                <span className="text-white/60 group-hover/item:text-blue-300 text-sm md:text-lg font-bold font-mono tracking-widest uppercase transition-colors">
                   {skill}
                 </span>
               </div>

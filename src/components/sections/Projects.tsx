@@ -21,7 +21,7 @@ export const Projects = () => {
     <section id="projects" className="py-16 sm:py-24 md:py-36 relative">
       
       {/* Ambient background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
@@ -32,10 +32,10 @@ export const Projects = () => {
               initial={{ width: 0 }}
               whileInView={{ width: "60px" }}
               viewport={{ once: true }}
-              className="h-[2px] bg-blue-500"
+              className="h-[2px] bg-cyan-400"
             />
             <h2 className="text-3xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white">
-              Selected<br />Works<span className="text-blue-500">.</span>
+              Selected<br />Works<span className="text-cyan-400">.</span>
             </h2>
           </div>
 
@@ -49,7 +49,7 @@ export const Projects = () => {
               <button
                 onClick={() => setFilter("all")}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
-                  filter === "all" ? "bg-blue-500 text-white shadow-lg" : "text-white/60 hover:text-white"
+                  filter === "all" ? "bg-cyan-400 text-black shadow-lg font-bold" : "text-white/60 hover:text-white"
                 }`}
               >
                 All ({projectsData.length})
@@ -57,7 +57,7 @@ export const Projects = () => {
               <button
                 onClick={() => setFilter("apps")}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
-                  filter === "apps" ? "bg-blue-500 text-white shadow-lg" : "text-white/60 hover:text-white"
+                  filter === "apps" ? "bg-cyan-400 text-black shadow-lg font-bold" : "text-white/60 hover:text-white"
                 }`}
               >
                 Apps
@@ -65,7 +65,7 @@ export const Projects = () => {
               <button
                 onClick={() => setFilter("ai")}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
-                  filter === "ai" ? "bg-blue-500 text-white shadow-lg" : "text-white/60 hover:text-white"
+                  filter === "ai" ? "bg-cyan-400 text-black shadow-lg font-bold" : "text-white/60 hover:text-white"
                 }`}
               >
                 AI
@@ -87,14 +87,14 @@ export const Projects = () => {
                 transition={{ duration: 0.35, delay: index * 0.04 }}
                 className="w-full flex"
               >
-                <div className="flex flex-col w-full p-3 sm:p-5 md:p-8 bg-[#0a0a0a]/90 border border-white/10 rounded-2xl md:rounded-3xl hover:border-blue-500/50 transition-all duration-500 group backdrop-blur-xl shadow-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+                <div className="flex flex-col w-full p-3 sm:p-5 md:p-8 bg-[#030712]/90 border border-white/10 rounded-2xl md:rounded-3xl hover:border-cyan-400/50 transition-all duration-500 group backdrop-blur-xl shadow-xl hover:shadow-[0_0_35px_rgba(6,182,212,0.15)]">
 
                   {/* Image Container */}
                   <Link 
                     href={project.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="relative flex items-center justify-center w-full overflow-hidden h-[100px] sm:h-[170px] md:h-[260px] mb-3 sm:mb-5 rounded-xl md:rounded-2xl bg-gradient-to-br from-[#121629] to-[#0a0c16] border border-white/10 group-hover:border-blue-500/40 transition-colors"
+                    className="relative flex items-center justify-center w-full overflow-hidden h-[100px] sm:h-[170px] md:h-[260px] mb-3 sm:mb-5 rounded-xl md:rounded-2xl bg-gradient-to-br from-[#0c1a2e] to-[#040d1a] border border-white/10 group-hover:border-cyan-400/40 transition-colors"
                   >
                     {/* Inner Grid Pattern overlay */}
                     <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20 group-hover:opacity-40 transition-opacity" style={{ backgroundSize: '30px 30px' }} />
@@ -122,7 +122,7 @@ export const Projects = () => {
 
                   {/* Card Content */}
                   <div className="flex-grow flex flex-col">
-                    <h3 className="font-bold text-xs sm:text-lg md:text-2xl text-white group-hover:text-blue-400 transition-colors line-clamp-1 mb-1 sm:mb-2">
+                    <h3 className="font-bold text-xs sm:text-lg md:text-2xl text-white group-hover:text-cyan-300 transition-colors line-clamp-1 mb-1 sm:mb-2">
                       {project.title}
                     </h3>
 
@@ -159,7 +159,7 @@ export const Projects = () => {
                             href={project.sourceCode} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="p-1 sm:p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                            className="p-1 sm:p-2 text-white/50 hover:text-cyan-400 hover:bg-white/10 rounded-full transition-colors"
                             title="View Source Code"
                           >
                             <FaGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
@@ -169,7 +169,7 @@ export const Projects = () => {
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 sm:gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider text-white/80"
+                          className="flex items-center gap-1 sm:gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 hover:bg-cyan-400 hover:text-black hover:border-cyan-400 transition-all text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider text-white/80"
                         >
                           <span>Demo</span>
                           <ExternalLink className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />

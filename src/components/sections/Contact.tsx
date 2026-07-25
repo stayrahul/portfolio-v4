@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, ArrowRight, CheckCircle2, Clock, Send } from "lucide-react";
+import { Mail, MapPin, CheckCircle2, Clock, Send } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { selfData } from "@/data/portfolioData";
 
@@ -25,7 +25,7 @@ export const Contact = () => {
     <section id="contact" className="py-24 md:py-36 relative overflow-hidden">
       
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-600/10 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-cyan-500/10 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -35,10 +35,10 @@ export const Contact = () => {
             initial={{ width: 0 }}
             whileInView={{ width: "60px" }}
             viewport={{ once: true }}
-            className="h-[2px] bg-blue-500 mb-6"
+            className="h-[2px] bg-cyan-400 mb-6"
           />
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white">
-            Let's <span className="text-blue-500">Connect.</span>
+            Let's <span className="text-cyan-400">Connect.</span>
           </h2>
           <p className="mt-4 text-xs md:text-sm text-white/50 font-mono tracking-widest uppercase max-w-md">
             Have a project in mind or want to collaborate? Send a message below.
@@ -50,7 +50,7 @@ export const Contact = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative p-6 sm:p-10 md:p-12 border border-white/10 bg-[#0a0a0a]/90 rounded-3xl backdrop-blur-2xl shadow-2xl"
+            className="relative p-6 sm:p-10 md:p-12 border border-white/10 bg-[#030712]/90 rounded-3xl backdrop-blur-2xl shadow-2xl"
           >
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 md:gap-8">
@@ -64,7 +64,7 @@ export const Contact = () => {
                     required 
                     type="text" 
                     placeholder="Jane Doe" 
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] transition-all text-sm placeholder:text-white/20 shadow-inner"
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-cyan-400 focus:bg-white/[0.06] transition-all text-sm placeholder:text-white/20 shadow-inner"
                   />
                 </div>
                 <div className="space-y-2">
@@ -75,7 +75,7 @@ export const Contact = () => {
                     required 
                     type="email" 
                     placeholder="jane@example.com" 
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] transition-all text-sm placeholder:text-white/20 shadow-inner"
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-cyan-400 focus:bg-white/[0.06] transition-all text-sm placeholder:text-white/20 shadow-inner"
                   />
                 </div>
               </div>
@@ -88,14 +88,14 @@ export const Contact = () => {
                   required 
                   rows={5} 
                   placeholder="Tell me about what you want to build or achieve..." 
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-white/[0.06] transition-all text-sm resize-none placeholder:text-white/20 shadow-inner"
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-cyan-400 focus:bg-white/[0.06] transition-all text-sm resize-none placeholder:text-white/20 shadow-inner"
                 />
               </div>
 
               <button 
                 disabled={isSubmitting}
                 type="submit" 
-                className="group relative flex items-center justify-center gap-3 bg-white text-black font-bold uppercase tracking-[0.15em] text-xs md:text-sm py-5 rounded-2xl hover:bg-blue-500 hover:text-white transition-all disabled:opacity-50 overflow-hidden shadow-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]"
+                className="group relative flex items-center justify-center gap-3 bg-cyan-400 text-black font-bold uppercase tracking-[0.15em] text-xs md:text-sm py-5 rounded-2xl hover:bg-cyan-300 transition-all disabled:opacity-50 overflow-hidden shadow-[0_0_25px_rgba(6,182,212,0.3)]"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   {isSubmitting ? "Transmitting..." : "Send Message"}
@@ -123,9 +123,9 @@ export const Contact = () => {
             <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-around gap-6 text-center sm:text-left">
               <a 
                 href={`mailto:${selfData.email}`} 
-                className="flex items-center gap-3 text-white/60 hover:text-blue-400 transition-colors group"
+                className="flex items-center gap-3 text-white/60 hover:text-cyan-300 transition-colors group"
               >
-                <div className="p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-blue-500/40">
+                <div className="p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-cyan-400/40">
                   <Mail size={16} />
                 </div>
                 <span className="text-xs md:text-sm font-mono tracking-wide">{selfData.email}</span>

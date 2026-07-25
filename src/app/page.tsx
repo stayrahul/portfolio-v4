@@ -5,11 +5,10 @@ import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
-import { Chatbot } from "@/components/ui/Chatbot";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black w-full overflow-hidden text-white selection:bg-blue-500 selection:text-white">
+    <main className="min-h-screen bg-black w-full overflow-hidden text-white selection:bg-cyan-500 selection:text-black">
       <Navbar />
       <Hero />
       <Skills />
@@ -17,7 +16,6 @@ export default function Home() {
       <Projects />
       <Contact />
       <Footer />
-      <Chatbot />
     </main>
   );
 }
