@@ -4,7 +4,7 @@ import { projectsData } from "@/data/portfolioData";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Sparkles, FolderGit2 } from "lucide-react";
+import { ExternalLink, FolderGit2 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 
@@ -18,37 +18,37 @@ export const Projects = () => {
   });
 
   return (
-    <section id="projects" className="py-24 md:py-36 relative">
+    <section id="projects" className="py-16 sm:py-24 md:py-36 relative">
       
       {/* Ambient background glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
         {/* HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-          <div className="space-y-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 mb-8 md:mb-12">
+          <div className="space-y-2 sm:space-y-4">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "60px" }}
               viewport={{ once: true }}
               className="h-[2px] bg-blue-500"
             />
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white">
+            <h2 className="text-3xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white">
               Selected<br />Works<span className="text-blue-500">.</span>
             </h2>
           </div>
 
-          <div className="flex flex-col md:items-end gap-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50 leading-relaxed font-mono md:text-right max-w-sm">
+          <div className="flex flex-col md:items-end gap-4 sm:gap-6">
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/50 leading-relaxed font-mono md:text-right max-w-sm">
               Crafted with performance, modular architecture, and aesthetic precision.
             </p>
 
             {/* Category Filter Pills */}
-            <div className="flex items-center gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+            <div className="flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md self-start md:self-auto">
               <button
                 onClick={() => setFilter("all")}
-                className={`px-4 py-2 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
                   filter === "all" ? "bg-blue-500 text-white shadow-lg" : "text-white/60 hover:text-white"
                 }`}
               >
@@ -56,48 +56,48 @@ export const Projects = () => {
               </button>
               <button
                 onClick={() => setFilter("apps")}
-                className={`px-4 py-2 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
                   filter === "apps" ? "bg-blue-500 text-white shadow-lg" : "text-white/60 hover:text-white"
                 }`}
               >
-                Web Apps
+                Apps
               </button>
               <button
                 onClick={() => setFilter("ai")}
-                className={`px-4 py-2 rounded-full text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider transition-all ${
                   filter === "ai" ? "bg-blue-500 text-white shadow-lg" : "text-white/60 hover:text-white"
                 }`}
               >
-                AI & Tools
+                AI
               </button>
             </div>
           </div>
         </div>
 
-        {/* PROJECTS GRID */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mt-8">
+        {/* PROJECTS GRID - 2 COLUMNS ON MOBILE & PHONE SCREENS */}
+        <motion.div layout className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-10 mt-6 sm:mt-8">
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.35, delay: index * 0.04 }}
                 className="w-full flex"
               >
-                <div className="flex flex-col w-full p-6 md:p-8 bg-[#0a0a0a]/90 border border-white/10 rounded-3xl hover:border-blue-500/50 transition-all duration-500 group backdrop-blur-xl shadow-2xl hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]">
+                <div className="flex flex-col w-full p-3 sm:p-5 md:p-8 bg-[#0a0a0a]/90 border border-white/10 rounded-2xl md:rounded-3xl hover:border-blue-500/50 transition-all duration-500 group backdrop-blur-xl shadow-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
 
-                  {/* Image Container with Ambient Background */}
+                  {/* Image Container */}
                   <Link 
                     href={project.link} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="relative flex items-center justify-center w-full overflow-hidden h-[180px] sm:h-[220px] md:h-[260px] mb-6 rounded-2xl bg-gradient-to-br from-[#121629] to-[#0a0c16] border border-white/10 group-hover:border-blue-500/40 transition-colors"
+                    className="relative flex items-center justify-center w-full overflow-hidden h-[100px] sm:h-[170px] md:h-[260px] mb-3 sm:mb-5 rounded-xl md:rounded-2xl bg-gradient-to-br from-[#121629] to-[#0a0c16] border border-white/10 group-hover:border-blue-500/40 transition-colors"
                   >
                     {/* Inner Grid Pattern overlay */}
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20 group-hover:opacity-40 transition-opacity" style={{ backgroundSize: '40px 40px' }} />
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20 group-hover:opacity-40 transition-opacity" style={{ backgroundSize: '30px 30px' }} />
 
                     {project.img ? (
                       <Image
@@ -106,41 +106,39 @@ export const Projects = () => {
                         width={420}
                         height={260}
                         loading="lazy"
-                        className="absolute bottom-0 z-10 w-11/12 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 rounded-t-xl shadow-2xl object-cover"
+                        className="absolute bottom-0 z-10 w-11/12 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 rounded-t-lg md:rounded-t-xl shadow-2xl object-cover"
                       />
                     ) : (
-                      <div className="flex flex-col items-center gap-2 text-white/30">
-                        <FolderGit2 size={36} />
-                        <span className="text-xs font-mono">Project Preview</span>
+                      <div className="flex flex-col items-center gap-1 text-white/30">
+                        <FolderGit2 size={24} className="sm:w-8 sm:h-8" />
+                        <span className="text-[10px] font-mono">Preview</span>
                       </div>
                     )}
 
-                    <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity p-2.5 rounded-full bg-black/80 border border-white/20 text-white backdrop-blur-md">
-                      <ExternalLink size={16} />
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-20 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 sm:p-2 rounded-full bg-black/80 border border-white/20 text-white backdrop-blur-md">
+                      <ExternalLink size={12} className="sm:w-4 sm:h-4" />
                     </div>
                   </Link>
 
                   {/* Card Content */}
                   <div className="flex-grow flex flex-col">
-                    <div className="flex items-center justify-between gap-4 mb-2">
-                      <h3 className="font-bold text-xl md:text-2xl text-white group-hover:text-blue-400 transition-colors line-clamp-1">
-                        {project.title}
-                      </h3>
-                    </div>
+                    <h3 className="font-bold text-xs sm:text-lg md:text-2xl text-white group-hover:text-blue-400 transition-colors line-clamp-1 mb-1 sm:mb-2">
+                      {project.title}
+                    </h3>
 
-                    <p className="font-light text-xs md:text-sm text-white/60 line-clamp-3 mb-6 flex-grow leading-relaxed">
+                    <p className="font-light text-[10px] sm:text-xs md:text-sm text-white/60 line-clamp-2 mb-3 sm:mb-5 flex-grow leading-relaxed">
                       {project.des}
                     </p>
 
                     {/* Footer / Tech Icons & Links */}
-                    <div className="flex items-center justify-between gap-4 pt-5 border-t border-white/10 mt-auto">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4 pt-3 sm:pt-4 border-t border-white/10 mt-auto">
 
                       {/* Tech icons stack */}
                       <div className="flex items-center">
                         {project.iconLists.map((icon, i) => (
                           <div
                             key={icon}
-                            className="flex items-center justify-center w-8 h-8 rounded-full border border-white/20 bg-black/90 -ml-2 first:ml-0 shadow-md backdrop-blur-md"
+                            className="flex items-center justify-center w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full border border-white/20 bg-black/90 -ml-1.5 sm:-ml-2 first:ml-0 shadow-md backdrop-blur-md"
                             style={{ zIndex: 10 - i }}
                           >
                             <Image 
@@ -148,33 +146,33 @@ export const Projects = () => {
                               alt="tech icon" 
                               width={16} 
                               height={16} 
-                              className="w-4 h-4 object-contain" 
+                              className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 object-contain" 
                             />
                           </div>
                         ))}
                       </div>
 
                       {/* Action Links */}
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-end">
                         {project.sourceCode && (
                           <Link 
                             href={project.sourceCode} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                            className="p-1 sm:p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                             title="View Source Code"
                           >
-                            <FaGithub className="w-5 h-5" />
+                            <FaGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </Link>
                         )}
                         <Link 
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all text-xs font-mono font-bold uppercase tracking-wider text-white/80"
+                          className="flex items-center gap-1 sm:gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider text-white/80"
                         >
-                          <span>Live Demo</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>Demo</span>
+                          <ExternalLink className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                         </Link>
                       </div>
 
