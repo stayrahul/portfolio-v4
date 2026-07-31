@@ -68,7 +68,7 @@ export const Projects = () => {
         </div>
 
         {/* Grid */}
-        <motion.div layout className="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6">
+        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -87,7 +87,7 @@ export const Projects = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative flex items-center justify-center w-full overflow-hidden h-[90px] sm:h-[170px] md:h-[250px] mb-3 sm:mb-5 rounded-lg md:rounded-xl bg-gradient-to-br from-[#0a1628] via-[#060e1c] to-[#080818] border border-white/[0.05] group-hover:border-sky-400/20 transition-all"
+                    className="relative flex items-center justify-center w-full overflow-hidden h-[90px] sm:h-[170px] md:h-[180px] lg:h-[160px] mb-3 sm:mb-5 rounded-lg md:rounded-xl bg-gradient-to-br from-[#0a1628] via-[#060e1c] to-[#080818] border border-white/[0.05] group-hover:border-sky-400/20 transition-all"
                   >
                     <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.08] group-hover:opacity-[0.15] transition-opacity" style={{ backgroundSize: '24px 24px' }} />
 
