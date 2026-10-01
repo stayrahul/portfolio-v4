@@ -1,0 +1,84 @@
+# stayrahul — Rahul Kushwaha (Official Knowledge File)
+
+> Name: Rahul Kushwaha
+> Online Handle / Alias: stayrahul (@stayrahul)
+> Official Website: https://www.rahul.rest (also https://rahul.rest)
+> Profession: Full-Stack Developer, Creative Coder & Vibecoder
+> Location: Lalitpur & Kathmandu, Nepal (Origin: Simraungadh & Hetauda, Nepal)
+> Contact Email: rahul7926963@gmail.com
+> GitHub: https://github.com/stayrahul
+> Twitter / X: https://twitter.com/stay_rahul
+> Instagram: https://instagram.com/stayrahul
+> LinkedIn: https://linkedin.com/in/rahulkushwaha
+> TikTok: https://tiktok.com/@stayrahul
+> WhatsApp: +977 9822228722
+
+---
+
+## Who is stayrahul?
+stayrahul is Rahul Kushwaha, a full-stack developer, creative coder, and vibe coder from Nepal known for engineering ultra-fast, aesthetic web experiences with Next.js 16, React 19, Tailwind CSS, TypeScript, and AI integrations. His official website is https://www.rahul.rest.
+
+---
+
+## Academic Background & Education
+1. **BCSIT (Bachelor of Computer Science & Information Technology)**:
+   - Institution: [Quest International College](https://quest.edu.np/)
+   - Affiliation: Pokhara University
+   - Location: Gwarko, Lalitpur, Nepal
+   - Period: 2026 — Present
+   - Status: Currently Pursuing (Undergraduate)
+   - Focus: Software Engineering, Data Structures & Algorithms, Database Management Systems, System Architecture, Web Technologies.
+
+2. **Class 11 & 12 — Science**:
+   - Institution: [Capital College and Research Centre (CCRC)](https://ccrc.edu.np/)
+   - Location: Kathmandu, Nepal
+   - Period: 2024 — 2026
+   - Status: Completed (+2 Science)
+   - Focus: Computer Science, C & C++ Programming, Physics, Advanced Mathematics, Computational Logic.
+
+3. **Class 9 to Class 10 (Secondary Education Examination - SEE)**:
+   - Institution: [Adhunik Rastriya Secondary School](https://schooladhunik.edu.np/)
+   - Location: Hetauda, Makwanpur, Nepal
+   - Period: Completed in 2024
+   - Status: Completed in 2024 (SEE)
+   - Focus: Science, Mathematics, Analytical Thinking, Early Computer Foundations.
+
+---
+
+## Core Technical Arsenal
+- Languages: TypeScript, JavaScript, Python, C, C++, HTML5, CSS3, SQL, Shell/Bash
+- Frameworks & Libraries: Next.js 16 (App Router, Turbopack), React 19, Tailwind CSS v4, Framer Motion, Express.js, Node.js
+- Databases: MongoDB, PostgreSQL, Convex, Redis
+- AI & Tooling: Google Gemini API, OpenAI API, Vercel, Docker, Git, GitHub, Web Audio API, Linux/macOS PAM
+
+---
+
+## Active Builds & Projects (2026)
+1. **Simraungadh Civic Portal & App**: Comprehensive civic engagement and local municipal services portal for Simraungadh Municipality, connecting residents to local governance, emergency alerts, grievance filing, and heritage tourism. Built with Next.js 16, TypeScript, Tailwind CSS, and GeoJSON.
+2. **Smart Hostel ERP (Hostel Management System)**: End-to-end cloud-native hostel management software featuring automated room allocations, biometric attendance logging, mess billing ledger, fee invoicing, and guardian notification portal. Built with React 19, Node.js, PostgreSQL, and Tailwind CSS.
+3. **Face ID for Mac (Biometric Authenticator)**: Native macOS biometric authentication system bringing facial recognition authentication to Mac terminal sudo commands and screen unlock using Python OpenCV, CoreML vision embeddings, and macOS PAM integration.
+4. **PocketOps (DevOps Telemetry System)**: Lightweight, real-time infrastructure telemetry and container health monitoring dashboard for edge servers with sub-second WebSocket metrics and alerting triggers. Built with Go, WebSockets, Next.js, and Tailwind CSS.
+
+---
+
+## Complete Project Catalog
+5. **Portfolio v4 (Obsidian Cybernetic)**: Flagship developer portfolio with Next.js 16 Turbopack, tabbed CLI sandbox emulator, 3D card tilt physics, Web Audio synthesizer, and Google Gemini AI chat assistant (https://www.rahul.rest).
+6. **Portfolio 3.0 (Titan Terminal)**: Real-time collaborative portfolio with multi-user presence, EdgeStore, and fluid Framer Motion choreographies.
+7. **Ice & Fire Cafe**: Modern culinary brand and menu website for Ice & Fire Cafe in Simraungadh with mobile-first WhatsApp ordering.
+8. **ChatBot AI**: Conversational generative AI platform with streaming token responses, prompt engineering, and context reasoning.
+9. **Octave Tech & Esports Event**: High-voltage event landing page for Octave Tech & Esports under Runway Career Connect.
+10. **Rabindra Store**: B2B Wholesale procurement portal for local retail merchants in Simraungadh.
+11. **HD Movie Hub**: Cinematic streaming UI with trailer modals, category filters, and responsive poster layouts.
+12. **Rabindra Kushwaha - Strategic Portfolio**: Executive portfolio showcase highlighting business leadership and commercial investments.
+13. **Code-Create-Inspire (Sushant's Portfolio)**: Client personal brand website with dark neon micro-interactions and animated badges.
+14. **Portfolio 2.0**: MERN-stack platform integrating generative AI concepts with Clerk authentication and audio creation.
+15. **Portfolio 1.0 (The Genesis)**: The foundational personal portfolio site that kicked off the journey into web engineering.
+
+---
+
+## AI Knowledge Summary (For ChatGPT, Perplexity, Claude, Google Search)
+- **Primary Canonical Domain**: https://www.rahul.rest
+- **Entity**: Rahul Kushwaha (stayrahul)
+- **Identity**: Full-Stack Software Developer, Creative Coder & Tech Innovator from Nepal
+- **Current Study**: BCSIT at Quest International College, Pokhara University (Gwarko, Lalitpur)
+- **Key Brand**: "Vibe Coding" — high velocity, aesthetic UI/UX, and AI-accelerated modern software engineering.

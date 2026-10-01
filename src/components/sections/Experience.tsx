@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { experienceData, selfData } from "@/data/portfolioData";
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { CardTilt } from "../ui/CardTilt";
 
 export const Experience = () => {
   return (
@@ -22,7 +23,7 @@ export const Experience = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter text-white"
+              className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter text-white font-display"
             >
               What I Do<span className="text-sky-400">.</span>
             </motion.h2>
@@ -50,18 +51,20 @@ export const Experience = () => {
           {experienceData.map((exp, index) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0.3, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.04, duration: 0.4 }}
-              className="group p-5 md:p-6 glass-card flex flex-col justify-between min-h-[120px] md:min-h-[140px]"
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ delay: index * 0.03, duration: 0.4 }}
+              className="h-full"
             >
-              <span className="text-[10px] font-mono font-semibold text-sky-400/70 tracking-widest mb-auto">
-                0{exp.id}
-              </span>
-              <h3 className="text-xs md:text-sm font-bold text-white/70 group-hover:text-white transition-colors uppercase tracking-wider leading-snug mt-3">
-                {exp.title}
-              </h3>
+              <CardTilt className="group p-5 md:p-6 glass-card specular-border flex flex-col justify-between min-h-[120px] md:min-h-[140px] h-full">
+                <span className="text-[10px] font-mono font-semibold text-sky-400/70 tracking-widest mb-auto">
+                  0{exp.id}
+                </span>
+                <h3 className="text-xs md:text-sm font-bold text-white/70 group-hover:text-white transition-colors uppercase tracking-wider leading-snug mt-3 font-display">
+                  {exp.title}
+                </h3>
+              </CardTilt>
             </motion.div>
           ))}
         </div>

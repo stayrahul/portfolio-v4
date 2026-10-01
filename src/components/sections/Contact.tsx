@@ -1,157 +1,259 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, CheckCircle2, Clock, Send, Check } from "lucide-react";
+import { Mail, Check, Sparkles, ArrowRight, Copy } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { selfData } from "@/data/portfolioData";
+import { soundManager } from "@/lib/sound";
+import { copyToClipboard } from "@/lib/clipboard";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 
-export const Contact = () => {
+const topicPresets = [
+  "New Project",
+  "Freelance Opportunity",
+  "Academic & Tech",
+  "Creative Collaboration",
+  "Coffee & Vibe"
+];
+
+interface ContactProps {
+  isSimpleCTA?: boolean;
+}
+
+export const Contact = ({ isSimpleCTA = false }: ContactProps) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [messageText, setMessageText] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [messageText, setMessageText] = useState("");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(selfData.email);
+  const handleCopyEmail = async () => {
+    const success = await copyToClipboard(selfData.email);
+    if (success) {
+      soundManager.playSuccess();
+    }
     setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2500);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleSelectTopic = (topic: string) => {
+    setSelectedTopic(topic);
+    if (!messageText || messageText.startsWith("Hi Rahul, I'd like to discuss")) {
+      setMessageText(`Hi Rahul, I'd like to connect regarding ${topic.toLowerCase()}... `);
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          topic: selectedTopic || "General Inquiry",
+          message: messageText,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        soundManager.playSuccess();
+        setSubmitted(true);
+        setName("");
+        setEmail("");
+        setMessageText("");
+        setSelectedTopic(null);
+      } else {
+        throw new Error(data.error || "Unable to deliver message automatically.");
+      }
+    } catch (err: unknown) {
+      soundManager.playError();
+      const message = err instanceof Error ? err.message : "Delivery uplink encountered a timeout. You can email directly below.";
+      setErrorMsg(message);
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setMessageText("");
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1200);
+    }
   };
 
-  return (
-    <section id="contact" className="py-28 md:py-40 relative overflow-hidden">
+  // Home Page Clean Minimal CTA Version
+  if (isSimpleCTA) {
+    return (
+      <section id="contact" className="py-20 sm:py-28 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-sky-500/[0.04] rounded-full blur-[180px] pointer-events-none" />
 
-      {/* Ambient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[450px] bg-sky-500/[0.05] rounded-full blur-[200px] pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/[0.08] specular-border text-center flex flex-col items-center shadow-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-xs font-mono mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Available for Work &amp; Inquiries</span>
+            </div>
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display mb-3">
+              Get in Touch<span className="text-sky-400">.</span>
+            </h2>
 
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-14">
-          <div className="section-line w-16 mb-8" />
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter text-white"
-          >
-            Get in Touch<span className="text-sky-400">.</span>
-          </motion.h2>
-          <p className="mt-4 text-xs md:text-sm text-white/40 font-mono tracking-wider max-w-sm">
-            Have an idea, want to connect, or just say hi? I'd love to hear from you.
-          </p>
-        </div>
+            <p className="text-xs sm:text-sm text-white/55 max-w-md leading-relaxed font-light mb-8">
+              Open for full-stack web engineering, client projects, and technical collaboration.
+            </p>
 
-        {/* Form Card */}
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-6 sm:p-8 md:p-10 glass-card"
-          >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5 md:gap-6">
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="space-y-1.5">
-                  <label className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1">
-                    Name
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    placeholder="Your name"
-                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-sky-400/50 focus:bg-white/[0.05] transition-all"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1">
-                    Email
-                  </label>
-                  <input
-                    required
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-sky-400/50 focus:bg-white/[0.05] transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1">
-                  Message
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  value={messageText}
-                  onChange={(e) => setMessageText(e.target.value)}
-                  placeholder="What's on your mind?"
-                  className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-sky-400/50 focus:bg-white/[0.05] transition-all resize-none"
-                />
-              </div>
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto glass-btn-primary px-8 py-3 text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 group active:scale-95 transition-transform"
+              >
+                <span>Open Contact Form</span>
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
 
               <button
-                disabled={isSubmitting}
-                type="submit"
-                className="flex items-center justify-center gap-2 bg-sky-400 hover:bg-sky-300 text-[#050a14] font-bold uppercase tracking-widest text-xs py-3.5 rounded-xl transition-all disabled:opacity-50"
+                onClick={handleCopyEmail}
+                className="w-full sm:w-auto glass-btn px-6 py-3 text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-2 text-white/80 active:scale-95 transition-transform cursor-pointer"
               >
-                {isSubmitting ? (
-                  <>Sending... <Clock size={14} className="animate-spin" /></>
+                {copiedEmail ? (
+                  <>
+                    <Check size={13} className="text-emerald-400" />
+                    <span className="text-emerald-300">Email Copied!</span>
+                  </>
                 ) : (
-                  <>Send Message <Send size={14} /></>
+                  <>
+                    <Copy size={13} className="text-sky-400" />
+                    <span>Copy Email</span>
+                  </>
                 )}
               </button>
 
-              {submitted && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center justify-center gap-2 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium"
-                >
-                  <CheckCircle2 size={14} />
-                  Sent! I'll get back to you soon.
-                </motion.div>
-              )}
-            </form>
-
-            {/* Contact Info */}
-            <div className="mt-8 pt-6 border-t border-white/[0.05] flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="flex items-center gap-2.5 text-white/50 hover:text-sky-300 transition-colors group cursor-pointer"
-                title="Copy email"
+              <a
+                href={selfData.socials.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto glass-btn px-5 py-3 text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-2 text-emerald-300 hover:text-white active:scale-95 transition-transform"
               >
-                <div className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06] group-hover:border-sky-400/25 transition-all">
-                  {copiedEmail ? <Check size={13} className="text-emerald-400" /> : <Mail size={13} />}
-                </div>
-                <div className="flex flex-col items-start">
-                  <span className="text-xs font-mono">{selfData.email}</span>
-                  <span className="text-[10px] font-mono text-sky-400/50">{copiedEmail ? "Copied!" : "Click to copy"}</span>
-                </div>
-              </button>
+                <FaWhatsapp size={14} />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-              <div className="flex items-center gap-2.5 text-white/50">
-                <div className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-                  <MapPin size={13} />
-                </div>
-                <span className="text-xs font-mono">{selfData.location}</span>
+  // Dedicated /contact Page Full Form Version
+  return (
+    <section id="contact" className="py-12 sm:py-20 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[450px] bg-sky-500/[0.05] rounded-full blur-[200px] pointer-events-none" />
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0.2, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.05 }}
+          className="p-6 sm:p-10 rounded-3xl glass-card specular-border"
+        >
+          {/* Quick Topic Chips */}
+          <div className="mb-6">
+            <label className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1 mb-2.5 flex items-center gap-1.5">
+              <Sparkles size={12} className="text-sky-400" /> Topic of discussion:
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {topicPresets.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => handleSelectTopic(t)}
+                  className={`px-3 py-1 rounded-full text-xs font-mono transition-all cursor-pointer ${selectedTopic === t
+                    ? "bg-sky-400 text-[#050a14] font-semibold shadow-[0_0_12px_rgba(56,189,248,0.3)]"
+                    : "glass-pill text-white/60 hover:text-white"
+                    }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label htmlFor="contact-name" className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1">
+                  Your Name
+                </label>
+                <input
+                  id="contact-name"
+                  required
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Sushant Kushwaha"
+                  className="w-full glass-input px-4 py-2.5 rounded-xl text-xs text-white placeholder:text-white/20 focus:outline-none transition-all"
+                />
+              </div>
+              <div className="space-y-1">
+                <label htmlFor="contact-email" className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1">
+                  Your Email
+                </label>
+                <input
+                  id="contact-email"
+                  required
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="email"
+                  className="w-full glass-input px-4 py-2.5 rounded-xl text-xs text-white placeholder:text-white/20 focus:outline-none transition-all"
+                />
               </div>
             </div>
-          </motion.div>
-        </div>
+
+            <div className="space-y-1">
+              <label htmlFor="contact-message" className="text-[11px] uppercase tracking-wider text-white/45 font-mono font-medium pl-1">
+                Message Payload
+              </label>
+              <textarea
+                id="contact-message"
+                required
+                rows={4}
+                value={messageText}
+                onChange={(e) => setMessageText(e.target.value)}
+                placeholder="Share project details, requirements, or inquiries..."
+                className="w-full glass-input px-4 py-2.5 rounded-xl text-xs text-white placeholder:text-white/20 focus:outline-none transition-all resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="mt-2 w-full glass-btn-primary py-3 rounded-xl text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+            >
+              <span>{isSubmitting ? "Transmitting..." : "Send Message to Gmail"}</span>
+              <Mail size={13} />
+            </button>
+
+            {submitted && (
+              <div className="p-3 rounded-xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-xs font-mono text-center flex items-center justify-center gap-2">
+                <Check size={14} />
+                <span>Message transmitted successfully to Rahul&apos;s Gmail inbox!</span>
+              </div>
+            )}
+
+            {errorMsg && (
+              <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-mono text-center">
+                <span>{errorMsg}</span>
+              </div>
+            )}
+          </form>
+        </motion.div>
       </div>
     </section>
   );
